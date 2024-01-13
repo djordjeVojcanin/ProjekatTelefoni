@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>Telefoni</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/zavrsniTest.css"/>
+        <script type="text/javascript" src="js/zavrsniTest.js"></script>
+        <style>
+            button {
+                display: block;
+                margin: 0 auto;
+                    }
+        </style>
+    </head>
+
+    <body onload="loadPage()">
+       
+<div class="container">
+            
+            <div class="d-flex justify-content-center align-items-center">
+                <div id="logout" style="display:none" class="mt-1">
+                       <p id="info"></p>
+                        <div id="tooltip" role="tooltip"></div>
+                        <button class="btn btn-danger d-block" id="btnLogout" onclick="logout()" aria-describedby="tooltip">Odjava</button>     
+                </div>
+            </div>
+
+            <!-- Pocetna forma -->
+            <div  class="d-flex justify-content-center align-items-center ">
+                <div id="pocetnaForma">
+                        <h3>Korisnik nije prijavljen na sistem</h3>                  
+                             
+                        <div class="col-md-12 text-center">
+                        <button type="button" id="btnLogin" onclick="showLogin()" class="btn btn-primary btn-blue  mt-2 d-block">Prijava</button>
+                         </div>
+                          
+                        <div class="col-md-12 text-center">
+                        <button type="button" id="btnRegister" onclick="showRegistration()" class="btn btn-secondary mt-2 d-block">Registracija</button>
+                        </div>
+                        <br>
+                        <br>
+                </div>
+            </div>
+
+        <!-- Logovanje -->
+        <div class="d-flex justify-content-center align-items-center">
+            <div id="loginFormDiv" style="display:none">
+                <h3>Prijava korisnika</h3>
+                <form method="post" action="post/" id="loginForm" onsubmit="return loginUser()">
+                    <p></p><label>Korisnicko ime: <input type="text" id="usernameLogin" ></label></p>
+                    <p><label >Lozinka: <input type="password" id="passwordLogin" style="margin: 0 0 0 50" ></label></p>
+                    <br />
+                    <button class="btn btn-danger d-block">Prijavi se</button> 
+                </form>
+                <button class="btn btn-secondary  mt-2 d-block" onclick="cancelLogging()">Odustajanje</button>
+            </div>
+        </div>
+
+        <!-- Registracija -->
+        <div class="d-flex justify-content-center align-items-center">
+            <div id="registerFormDiv" style="display:none">
+                
+                    <h3>Registracija korisnika</h3>
+                    
+                    <form method="post" action="post/" id="registerForm" onsubmit="return registerUser()">
+                        <label class="d-block">Korisnicko ime: <input type="text" id="usernameRegister"></label>
+                        <label class="d-block mt-2">Email: <input type="email" id="emailRegister"></label>
+                        <label class="d-block mt-2">Lozinka: <input type="password" id="passwordRegister"></label>
+                        <label class="d-block mt-2">Ponovi Lozinku: <input type="password" id="confirmPasswordRegister"></label>
+                        <br />
+                    
+                        <div class="button-container" >
+                            <button class="btn btn-primary btn-danger  mt-2 d-block">Registruj se</button>    
+                        </div>                               
+                    </form>
+
+                    <button class="btn btn-secondary btn-secondary mt-2 d-block" onclick="cancelRegistration()">Odustajanje</button>
+            </div>
+            <br />
+            <br />
+        </div>
+
+<!-- PRETRAGA -->
+    <div class="d-flex justify-content-center align-items-center">
+        <div id="formDivPretraga" style="display:none">
+            <form method="post" action="post/" id="pretragaForm" onsubmit="return submitPretragaForm()">
+                
+                <h3 class="d-flex justify-content-center">Pretraga telefona po ceni</h3>
+                
+                <div class="d-flex flex-column align-items-center" >
+                    <p><label class="d-block">Najmanja</label> <input  id="najmanjaCena" type="number" /></p>               
+                    <p><label class="d-block">Najveca: </label> <input  id="najvecaCena" type="number" /></p>                   
+                    <p><button class="btn btn-success">Trazi</button></p>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+
+<!-- tabela sa podacima -->
+    <div id="data">
+    </div>
+
+<!-- Dodavanje novog telefona -->
+        <div class="d-flex justify-content-center align-items-center">
+
+            <div id="formDiv" style="display:none;">
+                <form method="post" action="post/" id="telefonForm" onsubmit="return submitTelefonForm()">
+                    <h4>Dodavanje novog telefona</h4>
+                    <p><label>Model: </label> <input id="model" type="text" /></p>
+                    <br />
+                    <p><label>OS: </label> <input id="OS" type="text" /></p>
+                    <br />
+                    <p><label>Kolicina: </label> <input  id="kolicina" type="number"/></p>
+                    <br />
+                    <p><label>Cena: </label> <input  id="cena" type="number" /></p>
+                    <br />
+                    <p><label>Proizvodjac: </label> <select  id="proizvodjacId" type = "text"></select></p>
+                    <br />
+                    <p><input type="submit" value="Dodavanje" class="btn btn-success btn-block" /> </p>
+                    <p><input type="reset" value="Odustajanje" class="btn btn-warning btn-block" onclick="cancelStanForm()" /></p>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    </body>
+</html>
